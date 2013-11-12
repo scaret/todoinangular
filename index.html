@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="todo.js"></script>
+    <script src="_js/jquery-1.6.3.min.js"></script>
+    <link rel="stylesheet" href="todo.css">
+  </head>
+  <body>
+    <h2>Todo</h2>
+    <div ng-controller="TodoCtrl">
+      <span>{{remaining()}} of {{todos.length}} remaining</span>
+      [ <a href="" ng-click="archive()">archive</a> ]
+      [ <a href="" ng-click="sort()">sort</a> ]
+      <ul class="unstyled">
+        <li ng-repeat="todo in todos">
+          <input type="checkbox" ng-model="todo.done">
+          <span class="done-{{todo.done}}">{{todo.text}}</span>
+          @ <b>{{todo.deadline}}</b> 
+        </li>
+      </ul>
+      <form ng-submit="addTodo()">
+        <input type="text" ng-model="todoText"  size="30"
+               placeholder="add new todo here">
+        <form action="js/todo.js" method="get">
+             <input type="date" name="deadline">
+           </form>
+        <input class="btn-primary" type="submit" value="add">
+      </form>
+    </div>
+    </div>
+  </body>
+</html>
